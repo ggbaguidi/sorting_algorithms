@@ -1,2 +1,2 @@
-# sorting_algorithms
+# sorting algorithms
 SORTING BIG O ALGORITHMS
