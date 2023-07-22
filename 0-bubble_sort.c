@@ -31,10 +31,12 @@ void bubble_sort(int *array, size_t size)
 	size_t i, n = size;
 	int swapped;
 
+	if (size < 2)
+		return;
 	do {
 		swapped = 0;
 		for (i = 1; i < n; i++)
-			if (array[i - 1] > array[i])
+			if (array[i - 1] > array[i] && array[i])
 			{
 				swap(&array[i - 1], &array[i]);
 				print_array(array, size);
