@@ -1,6 +1,21 @@
 #include <stdio.h>
 #include "sort.h"
 
+/**
+ * swap_shell - swap
+ *
+ * @a: ...
+ * @b: ...
+ *
+ * Return: None
+ */
+
+void swap_shell(int *a, int *b)
+{
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
 
 /**
  * shell_sort -  the Shell sort algorithm
@@ -10,25 +25,22 @@
  *
  * Return: None
  */
+
 void shell_sort(int *array, size_t size)
 {
-	int tmp;
-	size_t i, j, inc;
+	size_t gap = 1, i, index = 0;
 
-	for (inc = size / 2; inc > 0; inc /= 2)
+	if (array == NULL || size < 2)
+		return;
+	while (gap < size / 3)
+		gap = 3 * gap + 1;
+	while (gap >= 1)
 	{
-		for (i = inc; i < size; i++)
-		{
-			tmp = array[i];
-			for (j = i; j >= inc; j -= inc)
-			{
-				if (tmp < array[j - inc])
-					array[j] = array[j - inc];
-				else
-					break;
-			}
-			array[j] = tmp;
-		}
+		for (i = gap; i < size; i++)
+			for (index = i; index >= gap &&
+			 (array[index] < array[index - gap]); index -= gap)
+				swap_shell(&array[index], &array[index - gap]);
 		print_array(array, size);
+		gap /= 3;
 	}
 }

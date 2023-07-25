@@ -17,6 +17,7 @@ typedef struct listint_s
 
 void swap(int *a, int *b);
 void swap_select(int *a, int *b);
+void swap_shell(int *a, int *b);
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
 int lomuto_partition(int *array, ssize_t first, ssize_t last, size_t size);
